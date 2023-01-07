@@ -3,6 +3,13 @@
 Hi. I'm Fatih. I made this bot to practice on node.js. I prefered to improve myself on node.js by doing discord bot. Because I'm using discord my daily life.
 
 
+
+# New Update
+Now you can run this bot multi or more server.
+New command added: **mention_role**
+This command show the which user or users has the selected role
+
+
 # How to install:
 You can download code as zip or you can try to terminal "git clone https://github.com/FatihTheConqueror/Discord-Role-Creator-Bot.git"
 
