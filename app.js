@@ -51,6 +51,11 @@ client.on("interactionCreate", async interaction =>{
       interaction.reply(msg_content)
 
     }
+    /*
+    This command will help you about your server users. For example:
+    If users join server, then It can be showed who has the role that user select.
+
+    */
     
     
     
