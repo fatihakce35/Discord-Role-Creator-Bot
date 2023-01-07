@@ -8,7 +8,7 @@ const register_slash = (client,commands) => { //getting client and commands
     const guild_id= client.guilds.cache.map(m=>m.id) //getting guild_id
     try {
         console.log('Started refreshing application (/) commands.')
-        rest.put(Routes.applicationGuildCommands(client.user.id, client.guilds.cache.map(m=>m.id)), { //registering slash commands
+        rest.put(Routes.applicationCommands(client.user.id), { //registering slash commands
           body: commands,
         })
         

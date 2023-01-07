@@ -36,7 +36,29 @@ client.on("interactionCreate", async interaction =>{
     get_role_func(interaction)
     
   }
+  if (interaction.commandName == "mention_role") { //checking if mention_role command
+    let role_id = interaction.options.get('role').value
+  
+    let user_ids = interaction.guild.roles.cache.get(role_id).members.map(m => m.user.id)
+    if (user_ids.length <= 0) {
+      interaction.reply("**No user has this role !**")
+    }
+    else {
+      let msg_content = ""
+      user_ids.forEach(element =>{
+        msg_content += `<@${element}> `
+      })
+      interaction.reply(msg_content)
+
+    }
+    
+    
+    
+    
+
+    
+  }
 })
 
 
-client.login(process.env.token)
+client.login(process.env.token) //bot token

@@ -97,6 +97,17 @@ const commands = [{
         required: true
     }]
 
+},
+{
+    name:"mention_role",
+    description:"You can mention roles by select them",
+    options: [{
+        name: "role",
+        description: "Select role",
+        type: 8,
+        required: true
+    }]
+
 }
 ]
 export default commands
