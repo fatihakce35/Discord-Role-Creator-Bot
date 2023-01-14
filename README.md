@@ -68,7 +68,7 @@ If youa approve this request, bot will create role by "rol_name" and "role_color
 
 
 ## **/get_role:**
-This command is you adding roles the user. Users can select only default permissions roles. You can use this command getting roles by created "/role_create"
+With this command you can add role for the user. Users can select only default permissions roles. You can use this command getting roles by created "/role_create"
 
 ![alt text](https://i.hizliresim.com/cghk6xl.png)
 
