@@ -1,11 +1,11 @@
 # Discord-Role-Creator-Bot
 
-Hi. I'm Fatih. I made this bot to practice on node.js. I prefered to improve myself on node.js by doing discord bot. Because I'm using discord my daily life.
+Hi. I'm Fatih. I made this bot to practice on node.js. I prefered to improve myself on node.js by doing discord bot. Because I'm using discord in my daily life.
 
 
 
 # New Update
-Now you can run this bot multi or more server.
+Now you can run this bot on multi or more server.
 New command added: **mention_role**
 This command show the which user or users has the selected role
 
@@ -32,7 +32,7 @@ Bot, creating role  with parametres "role_name" and "role_color". For this, we g
 
 
 ## **/role_admin:**
-This command is you adding roles to approve or reject role creating requests.
+The roles you will insert are the the authorized roles which will reject or approve new role requests..
 
 ![alt text](https://i.hizliresim.com/rrtwo55.png)
 
