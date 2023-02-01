@@ -16,7 +16,7 @@ client.on("interactionCreate", async interaction =>{
     if (!fs.existsSync(`./guilds_info/${interaction.guildId}.txt`)) { //checking if role_admin roles not exists
       return interaction.reply("Please adjust the approved or rejected role votes by **/role_admin**")
     }
-    if (interaction.guild.roles.cache.map(role=>role.name.toLowerCase()).includes(interaction.options.get('rol_name').value.toLowerCase())){ //checking if rol name already in use
+    if (interaction.guild.roles.cache.map(role => role.name.toLowerCase()).includes(interaction.options.get('rol_name').value.toLowerCase())){ //checking if rol name already in use
       return interaction.reply({ content: '**Role name is already in use**', ephemeral: true }) }
 
     
@@ -29,6 +29,7 @@ client.on("interactionCreate", async interaction =>{
   if (interaction.commandName == "role_admin") {
     const role_admin_func = await import("./commands/role_admin.js").then(m=>m.default)
     role_admin_func(interaction)
+    
     
   }
   if (interaction.commandName == "get_role") { //checking if get_role command
@@ -51,6 +52,7 @@ client.on("interactionCreate", async interaction =>{
       interaction.reply(msg_content)
 
     }
+
     /*
     This command will help you about your server users. For example:
     If users join server, then It can be showed who has the role that user select.
@@ -58,10 +60,13 @@ client.on("interactionCreate", async interaction =>{
     */
     
     
-    
-    
 
     
+  }
+  if (interaction.commandName == "help") {
+    const help_message = await import("./guilds_info/help.js").then(m=>m.default)
+    
+    await interaction.reply(help_message)
   }
 })
 

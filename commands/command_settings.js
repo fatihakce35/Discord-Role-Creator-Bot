@@ -108,6 +108,11 @@ const commands = [{
         required: true
     }]
 
+},
+{
+    name:"help",
+    description:"Tutorial for Role Creator Bot !"
+
 }
 ]
 export default commands
