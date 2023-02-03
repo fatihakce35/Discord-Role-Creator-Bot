@@ -117,4 +117,6 @@ const commands = [{
 ]
 export default commands
 
+//here we have command and their settings.
+
 

@@ -2,9 +2,7 @@ import {Client} from "discord.js"
 import fs, { readdirSync } from "fs"
 import "dotenv/config"
 
-
 const client = new Client({intents:["GuildMembers","GuildMessages","GuildIntegrations","Guilds","MessageContent"]})
-
 
 
 const event = await import(`./event/ready.js`).then(m=>m.default)
@@ -59,16 +57,12 @@ client.on("interactionCreate", async interaction =>{
 
     */
     
-    
-
-    
   }
-  if (interaction.commandName == "help") {
+  if (interaction.commandName == "help") { //help command about how to use bot
     const help_message = await import("./guilds_info/help.js").then(m=>m.default)
     
     await interaction.reply(help_message)
   }
 })
-
 
 client.login(process.env.token) //bot token
