@@ -65,7 +65,7 @@ client.on("interactionCreate", async interaction =>{
   if (interaction.commandName == "help") { //help command about how to use bot
     const help_message = await import("./guilds_info/help.js").then(m=>m.default)
     
-    await interaction.reply(help_message)
+    await interaction.reply(help_message) //  help message content is in guilds/info/help.js
   }
 })
 
