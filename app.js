@@ -37,8 +37,12 @@ client.on("interactionCreate", async interaction =>{
   }
   if (interaction.commandName == "mention_role") { //checking if mention_role command
     let role_id = interaction.options.get('role').value
+    const guild = client.guilds.cache.get(interaction.guildId)
+    await guild.fetch()
+    await guild.members.fetch() //updating discord users data and roles data
+    
   
-    let user_ids = interaction.guild.roles.cache.get(role_id).members.map(m => m.user.id)
+    let user_ids = guild.roles.cache.get(role_id).members.map(m => m.user.id)
     if (user_ids.length <= 0) {
       interaction.reply("**No user has this role !**")
     }
