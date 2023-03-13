@@ -2,9 +2,7 @@ import {Client} from "discord.js"
 import fs, { readdirSync } from "fs"
 import "dotenv/config"
 
-
 const client = new Client({intents:["GuildMembers","GuildMessages","GuildIntegrations","Guilds","MessageContent"]})
-
 
 
 const event = await import(`./event/ready.js`).then(m=>m.default)
@@ -12,7 +10,7 @@ event(client)
 
 
 client.on("interactionCreate", async interaction =>{
-  if (interaction.commandName == "role_create") { //role_create command name
+  if (interaction.commandName == "create_role") { //create_role command name
     if (!fs.existsSync(`./guilds_info/${interaction.guildId}.txt`)) { //checking if role_admin roles not exists
       return interaction.reply("Please adjust the approved or rejected role votes by **/role_admin**")
     }
@@ -37,19 +35,23 @@ client.on("interactionCreate", async interaction =>{
     get_role_func(interaction)
     
   }
-  if (interaction.commandName == "mention_role") { //checking if mention_role command
+  if (interaction.commandName == "show_role") { //checking if mention_role command
     let role_id = interaction.options.get('role').value
+    const guild = client.guilds.cache.get(interaction.guildId)
+    await guild.fetch()
+    await guild.members.fetch() //updating discord users data and roles data
+    
   
-    let user_ids = interaction.guild.roles.cache.get(role_id).members.map(m => m.user.id)
+    let user_ids = guild.roles.cache.get(role_id).members.map(m => m.user.username)
     if (user_ids.length <= 0) {
       interaction.reply("**No user has this role !**")
     }
     else {
       let msg_content = ""
       user_ids.forEach(element =>{
-        msg_content += `<@${element}> `
+        msg_content += `@${element}, `
       })
-      interaction.reply(msg_content)
+      interaction.reply({ content: msg_content, ephemeral: true })
 
     }
 
@@ -59,16 +61,12 @@ client.on("interactionCreate", async interaction =>{
 
     */
     
-    
-
-    
   }
-  if (interaction.commandName == "help") {
+  if (interaction.commandName == "help") { //help command about how to use bot
     const help_message = await import("./guilds_info/help.js").then(m=>m.default)
     
-    await interaction.reply(help_message)
+    await interaction.reply(help_message) //  help message content is in guilds/info/help.js
   }
 })
-
 
 client.login(process.env.token) //bot token

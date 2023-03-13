@@ -1,5 +1,5 @@
-const commands = [{
-    name:"role_create",
+﻿const commands = [{
+    name:"create_role",
     description:"Creating role by name and color",
     options:[{
         name:"rol_name",
@@ -99,7 +99,7 @@ const commands = [{
 
 },
 {
-    name:"mention_role",
+    name:"show_role",
     description:"You can mention roles by select them",
     options: [{
         name: "role",

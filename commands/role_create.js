@@ -5,10 +5,16 @@ export default async interaction => {
         
         //importing buttons
       const rows = await import("./buttons.js").then(m=>m.default) //importing message buttons
-      const row = rows(interaction)   
+      const row = rows(interaction)
+      //
+      let admin_roles_ids = fs.readFileSync(`./guilds_info/${interaction.guildId}.txt`,'utf-8').split("\n") // getting role_admin roles
+      let admin_roles = "" //getting admin roles because we're gonna mention admin into message
+      admin_roles_ids.forEach(element =>{
+        admin_roles += `<@&${element}> `
+      })
         
         //getting message content
-      let msg_content = `${interaction.user} has a started a vote to create a role !\n\n**Role name: **${interaction.options.get('rol_name').value}\n**Role Color: **${interaction.options.get('color').value}`
+      let msg_content = `${admin_roles}\n\n${interaction.user} has a started a vote to create a role !\n\n**Role name: **${interaction.options.get('rol_name').value}\n**Role Color: **${interaction.options.get('color').value}`
         
         
         //replying message with content and buttons
@@ -22,8 +28,9 @@ export default async interaction => {
   
       collector.on('collect', async i => {
          
-        let roles_ids = fs.readFileSync(`./guilds_info/${interaction.guildId}.txt`,'utf-8').split("\n") // getting role_admin roles
+        
         const user_roles = i.member.roles.member._roles //getting user roles to check if it has permissions
+        let roles_ids = fs.readFileSync(`./guilds_info/${interaction.guildId}.txt`,'utf-8').split("\n") // getting role_admin roles
         
         
         if ((i.customId.startsWith("reject") || i.customId.startsWith("approve")) && !user_roles.some(item => roles_ids.includes(item))) {
