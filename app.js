@@ -41,6 +41,7 @@ client.on("interactionCreate", async interaction =>{
     await guild.fetch()
     await guild.members.fetch() //updating discord users data and roles data
     
+    
   
     let user_ids = guild.roles.cache.get(role_id).members.map(m => m.user.username)
     if (user_ids.length <= 0) {
@@ -62,11 +63,14 @@ client.on("interactionCreate", async interaction =>{
     */
     
   }
+   //help command about how to use bot
   if (interaction.commandName == "help") { //help command about how to use bot
     const help_message = await import("./guilds_info/help.js").then(m=>m.default)
     
     await interaction.reply(help_message) //  help message content is in guilds/info/help.js
+     //  help message content is in guilds/info/help.js
   }
 })
 
 client.login(process.env.token) //bot token
+
